@@ -4,9 +4,8 @@
 ### Требуется
 Собрать собрать систему с подключенным рейдом и смонтированными разделоми. После перезагрузки разделы должны автоматически примонтироваться
 ### Выполнение
-Написан Vagrantfile и скрипт провижининга script.sh, выполняющие требования.
-[hw2.1/Vagrantfile](hw2.1/Vagrantfile)
-
+Написан Vagrantfile и скрипт провижининга script.sh, выполняющие требования.  
+[hw2.1/Vagrantfile](hw2.1/Vagrantfile)  
 [hw2.1/script.sh](hw2.1/script.sh)
 ## Задание 2.2
 ### Требуется
@@ -17,10 +16,8 @@
 Подключим к системе еще один IDE диск, такого же размера (40G).
 Будем собирать RAID1 из существующего диска и нового.
 #### Скрипты для автосборки 
-[hw2.2/Vagrantfile](hw2.2/Vagrantfile)
-
-[hw2.2/stage-1.sh](hw2.2/stage-1.sh)
-
+[hw2.2/Vagrantfile](hw2.2/Vagrantfile)  
+[hw2.2/stage-1.sh](hw2.2/stage-1.sh)  
 [hw2.2/stage-2.sh](hw2.2/stage-2.sh)
 #### Процесс ручного переноса системы на RAID1.
 Получаем список блочных устройств:
@@ -230,10 +227,11 @@ md0 : active raid1 sdb1[1]
       
 unused devices: <none>
 ```
-Осталось добавить раздел `/dev/sda1` в RAID
+Теперь добавим раздел `/dev/sda1` в RAID
+```
 [root@otuslinux ~]# mdadm --manage /dev/md0 --add /dev/sda1
 mdadm: hot added /dev/sda1
-
+```
 Подождем процесса сборки RAID 
 ```
 [root@otuslinux ~]# cat /proc/mdstat
